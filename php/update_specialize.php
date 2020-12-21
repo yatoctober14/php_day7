@@ -1,5 +1,6 @@
 <?php 
 	
+	$id = $_POST['id'];
 	$name_ar = $_POST['name_ar'];
 	$name_en = $_POST['name_en'];
 	$description_ar = $_POST['description_ar'];
@@ -23,7 +24,7 @@
 	//var_dump($image);
 	
 	require_once('specializes.php');
-	$result = insert_specialize($name_ar,$name_en,$description_ar,$description_en,$alt,$book_ar,$book_en,$image);
+	$result = update_specialize($id,$name_ar,$name_en,$description_ar,$description_en,$alt,$book_ar,$book_en,$image);
 	if($result == "SUCCESS")
 	{
 		redirect_to	('admin/admin-specialize.php');

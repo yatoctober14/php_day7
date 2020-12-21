@@ -21,8 +21,11 @@ function get_all()
         array_push($specializes, $record);
     }
     //print_r($specializes);
+	mysqli_free_result($results);
+	
+	
     return $specializes;
-    mysqli_free_result($results);
+    
 
 }
 
@@ -38,9 +41,32 @@ function insert_specialize($name_ar,$name_en,$description_ar,$description_en,$al
 
         return "query failed may be your syntax is wrong";
     }
-
+	
+	mysqli_free_result($results);
+	
     return "SUCCESS";
-    mysqli_free_result($results);
+    
+
+}
+
+
+function update_specialize($id,$name_ar,$name_en,$description_ar,$description_en,$alt,$book_ar,$book_en,$image)
+{
+    global $connection;
+    $query = "UPDATE specialize SET name_ar='$name_ar',name_en='$name_en'";
+	$query .= ",card_image='$image',alt_image='$alt',";
+	$query .= "description_ar='$description_ar',description_en='$description_en',";
+	$query .= "books_name_ar='$book_ar',books_name_en='$book_en' WHERE id='$id'";
+    $results = mysqli_query($connection, $query);
+    if ($results == false) {
+
+        return "query failed may be your syntax is wrong";
+    }
+	
+	mysqli_free_result($results);
+	
+    return "SUCCESS";
+    
 
 }
 

@@ -73,7 +73,8 @@
     </div>
 	
 	<!--Edit  specialize modal-->
-    <div class="modal fade" id="Specialize" tabindex="-1" role="dialog" aria-hidden="true" style="direction: rtl">
+	<?php foreach($specializes as $specialize):?>
+    <div class="modal fade" id="Specialize<?php echo $specialize['id']?>" tabindex="-1" role="dialog" aria-hidden="true" style="direction: rtl">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content border-0 p-4">
                 <div class="modal-header border-0">
@@ -86,25 +87,48 @@
                 <hr class="w-25 mt-0">
                 <div class="modal-body">
                     <div class="login">
-                        <form action="#" class="row form-register" method="post" style="direction: rtl; text-align: right">
+                        <form action="<?php echo at_root().'php/update_specialize.php' ?>" method="post"  enctype="multipart/form-data" class="row form-register"  style="direction: rtl; text-align: right">
+							<input type="hidden" name="id" value="<?php echo $specialize['id'] ?>" >
                             <div class="col-12">
-                                <label class="col-12">اسم التخصص
-                                    <input type="text" class="form-control mb-3" id="specializeTitle" name="specializeTitle"
+                                <label class="col-12">عربي  اسم التخصص
+                                    <input value="<?php echo $specialize['name_ar'] ?>" type="text" class="form-control mb-3" id="specializeTitle" name="name_ar"
+                                           required="required" data-error="برجاء كتابة اسم التخصص" style="font-family: DroidArabicNaskh; height: 2.5rem">
+                                </label>
+								 <label class="col-12">اسم التخصص انجليزي
+                                    <input value="<?php echo $specialize['name_en'] ?>" type="text" class="form-control mb-3" id="specializeTitle" name="name_en"
                                            required="required" data-error="برجاء كتابة اسم التخصص" style="font-family: DroidArabicNaskh; height: 2.5rem">
                                 </label>
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control pb-5 col-12 mb-4" type="text"
-                                          placeholder="اكتب وصف للتخصص هنا" required="required"
-                                          data-error="الوصف مطلوب"  style="font-family: DroidArabicNaskh"></textarea>
+                                <textarea class="form-control pb-5 col-12 mb-4" type="text" name="description_ar"
+                                          placeholder="اكت بالعري ب وصف للتخصص هنا" required="required"
+                                          data-error="الوصف مطلوب"  style="font-family: DroidArabicNaskh"><?php echo $specialize['description_ar'] ?></textarea>
+                            </div>
+							 <div class="col-12">
+                                <textarea class="form-control pb-5 col-12 mb-4" type="text" name="description_en"
+                                          placeholder="اكتب وصف للتخصص هنا بالانجليزي" required="required"
+                                          data-error="الوصف مطلوب"  style="font-family: DroidArabicNaskh"><?php echo $specialize['description_en'] ?></textarea>
                             </div>
                             <div class="col-3 btn btn-success mb-3" style="position: relative; overflow: hidden; right: 15px; font-size: 15px; padding: 14px 0 14px 0;">
                                 اخــتــر صـــورة
-                                <input type="file" name="file" style="position: absolute; opacity: 0;">
+                                <input type="file" name="image" >
+								<img class="img-fluid" src="<?php echo at_public().$specialize['card_image'] ?>" >
+                            </div>
+							<div class="col-12">
+                                <label class="col-12">الكلام الخاض بالضورة
+                                    <input value="<?php echo $specialize['alt_image'] ?>" type="text" class="form-control mb-3" name="image_alt"
+                                           required="required" data-error="برجاء كتابة اسم لكتب التخصص" style="font-family: DroidArabicNaskh; height: 2.5rem">
+                                </label>
                             </div>
                             <div class="col-12">
-                                <label class="col-12">اسم لكتب التخصص
-                                    <input type="text" class="form-control mb-3" id="booksTitle" name="booksTitle"
+                                <label class="col-12">اسم لكتب التخصص بالعربي
+                                    <input value="<?php echo $specialize['books_name_ar'] ?>" type="text" class="form-control mb-3" id="booksTitle" name="booke_ar"
+                                           required="required" data-error="برجاء كتابة اسم لكتب التخصص" style="font-family: DroidArabicNaskh; height: 2.5rem">
+                                </label>
+                            </div>
+							<div class="col-12">
+                                <label class="col-12">اسم لكتب التخصص بالانجليزي
+                                    <input value="<?php echo $specialize['books_name_en'] ?>" type="text" class="form-control mb-3" id="booksTitle" name="book_en"
                                            required="required" data-error="برجاء كتابة اسم لكتب التخصص" style="font-family: DroidArabicNaskh; height: 2.5rem">
                                 </label>
                             </div>
@@ -117,6 +141,7 @@
             </div>
         </div>
     </div>
+	<?php endforeach?>
 
 
 
@@ -155,7 +180,7 @@
                                 <div class="col-12 d-flex text-center border-bottom-0" style="padding-left: 0">
                                     <div class="col-6">
                                         <button type="button" class="button btn btn-info" data-toggle="modal"
-                                                data-target="#Specialize">تعديل
+                                                data-target="#Specialize<?php echo $specialize['id']?>">تعديل
                                         </button>
                                     </div>
                                     <div class="col-6">
