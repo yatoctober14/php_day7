@@ -112,11 +112,11 @@
                 <hr class="w-50 mt-0">
                 <div class="modal-body">
                     <div class="login">
-                        <form action="#" class="row form-register" method="post"
+                        <form action="<?php echo at_root()."/php/register.php" ?>" class="row form-register" method="post"
                               style="direction: rtl; text-align: right">
                             <div class="col-6">
                                 <label class="col-12">الاسم بالكامل
-                                    <input type="text" class="form-control mb-3" id="signupName" name="signupName"
+                                    <input type="text" class="form-control mb-3" id="signupName" name="name"
                                            required="required" data-error="برجاء كتابة الاسم الثلاثي بالكامل">
                                 </label>
                             </div>
