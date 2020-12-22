@@ -85,7 +85,9 @@
                                     class="p-sm-2 py-2 px-0 d-inline-block top-register" href="#"
                                     data-toggle="modal" data-target="#signupModal">التسجيل</a></li>';
 						else echo "<li class='list-inline-item'><a
-                                    class='p-sm-2 py-2 px-0 d-inline-block top-login'>".$_SESSION['name']."</a></li>";?>
+                                    class='p-sm-2 py-2 px-0 d-inline-block top-login'>".$_SESSION['name']."</a></li>
+									<li class='list-inline-item'><a href='../php/logout.php'
+                                    class='p-sm-2 py-2 px-0 d-inline-block top-login'>Logout</a></li>";?>
 						
                     </ul>
                 </div>
