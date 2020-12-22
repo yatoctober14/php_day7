@@ -1,5 +1,14 @@
 <?php
+	$loggedin = false;
+	session_start();
+	if(isset($_SESSION['loggedin']) && $_SESSION['name'] != '') 
+	{
+		$loggedin = true;
+	}
 	require_once('../php/initialize.php');
+	
+	
+	
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -67,13 +76,17 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-5 text-lg-left text-md-left text-sm-left modals">
                     <ul class="list-inline">
+						<?php if(!$loggedin) echo' 
                         <li class="list-inline-item"><a
                                     class="p-sm-2 py-2 px-0 d-inline-block top-login" href="#"
                                     data-toggle="modal" data-target="#loginModal">تسجيل الدخول</a></li>
                         <span class="line2">|</span>
                         <li class="list-inline-item"><a
                                     class="p-sm-2 py-2 px-0 d-inline-block top-register" href="#"
-                                    data-toggle="modal" data-target="#signupModal">التسجيل</a></li>
+                                    data-toggle="modal" data-target="#signupModal">التسجيل</a></li>';
+						else echo "<li class='list-inline-item'><a
+                                    class='p-sm-2 py-2 px-0 d-inline-block top-login'>".$_SESSION['name']."</a></li>";?>
+						
                     </ul>
                 </div>
             </div>
@@ -219,7 +232,7 @@
                 </div>
                 <hr class="w-25 mt-0">
                 <div class="modal-body">
-                    <form action="#" class="row form-register" method="post"
+                    <form action="<?php echo at_root().'/php/authenticate.php' ?>" class="row form-register" method="post"
                           style="direction: rtl; text-align: right">
                         <div class="col-12">
                             <label class="col-12">الايميل
