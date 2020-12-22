@@ -1,4 +1,6 @@
-<?php require_once('admin-header.php'); 
+<?php
+	
+	require_once('admin-header.php'); 
 	require_once('../php/initialize.php');
 	require_once('../php/specializes.php');
     $specializes = get_all();
@@ -43,6 +45,7 @@
                             <div class="col-3 btn btn-success mb-3" style="position: relative; overflow: hidden; right: 15px; font-size: 15px; padding: 14px 0 14px 0;">
                                 اخــتــر صـــورة
                                 <input type="file" name="image" >
+								<span class="text-danger"><?php echo"aaaaaa"; if(!empty($error_image)) echo $error_image; ?></span>
                             </div>
 							<div class="col-12">
                                 <label class="col-12">الكلام الخاض بالضورة
@@ -115,6 +118,7 @@
 								<img class="img-fluid" src="<?php echo at_public().$specialize['card_image'] ?>" >
                             </div>
 							<div class="col-12">
+								
                                 <label class="col-12">الكلام الخاض بالضورة
                                     <input value="<?php echo $specialize['alt_image'] ?>" type="text" class="form-control mb-3" name="image_alt"
                                            required="required" data-error="برجاء كتابة اسم لكتب التخصص" style="font-family: DroidArabicNaskh; height: 2.5rem">
@@ -184,7 +188,7 @@
                                         </button>
                                     </div>
                                     <div class="col-6">
-                                        <button type="button" class="button btn btn-danger">حذف</button>
+                                        <a href="<?php echo at_root().'php/delete_specialize.php?id='.$specialize['id'] ?>" type="button" class="button btn btn-danger">حذف</a>
                                     </div>
                                 </div>
                             </td>

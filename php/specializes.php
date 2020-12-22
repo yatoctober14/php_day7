@@ -82,4 +82,20 @@ function update_specialize($id,$name_ar,$name_en,$description_ar,$description_en
 }
 
 
+function delete_specialize($id)
+{
+    global $connection;
+    $query = "DELETE FROM specialize WHERE id='$id'";
+    $results = mysqli_query($connection, $query);
+    if ($results == false) 
+	{
+
+        return "query failed may be your syntax is wrong";
+    }
+
+	mysqli_free_result($results);
+    return "SUCCESS";
+
+}
+
 ?>
