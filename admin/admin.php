@@ -1,4 +1,8 @@
-<?php require_once('admin-header.php'); ?>
+<?php 
+	require_once('admin-header.php'); 
+	require_once('../php/admin.php');
+	list($qustion_number,$answers_number,$sheikh_number,$users_number,$specialize_number)=get_staistics();
+?>
 
 <div id="main" style="direction: rtl; text-align: right">
 
@@ -18,7 +22,7 @@
                     <div class="milestone text-center">
                         <div class="milestone_icon"><img src="<?php echo at_public()."images/files.svg";?>" alt="questions">
                         </div>
-                        <div class="milestone_counter" data-end-value="500">0</div>
+                        <div class="milestone_counter" data-end-value="<?php echo $qustion_number ?>">0</div>
                         <div class="milestone_text">عدد الأسئلة</div>
                     </div>
                 </div>
@@ -28,7 +32,7 @@
                     <div class="milestone text-center">
                         <div class="milestone_icon"><img src="<?php echo at_public()."images/notepad.svg";?>" alt="answers">
                         </div>
-                        <div class="milestone_counter" data-end-value="500">0</div>
+                        <div class="milestone_counter" data-end-value="<?php echo $answers_number ?>">0</div>
                         <div class="milestone_text">عدد الأجوبة</div>
                     </div>
                 </div>
@@ -38,7 +42,7 @@
                     <div class="milestone text-center">
                         <div class="milestone_icon"><img src="<?php echo at_public()."images/man.svg";?>" alt="admins">
                         </div>
-                        <div class="milestone_counter" data-end-value="20">0</div>
+                        <div class="milestone_counter" data-end-value="<?php echo $sheikh_number ?>">0</div>
                         <div class="milestone_text">عدد الشيوخ (المديرين)</div>
                     </div>
                 </div>
@@ -48,8 +52,18 @@
                     <div class="milestone text-center">
                         <div class="milestone_icon"><img src="<?php echo at_public()."images/user.svg";?>" alt="users">
                         </div>
-                        <div class="milestone_counter" data-end-value="1443">0</div>
+                        <div class="milestone_counter" data-end-value="<?php echo $users_number ?>">0</div>
                         <div class="milestone_text">عدد المستخدمين</div>
+                    </div>
+                </div>
+				
+				<!--Milestone4-->
+                <div class="col-lg-3 milestone_col">
+                    <div class="milestone text-center">
+                        <div class="milestone_icon"><img src="<?php echo at_public()."images/user.svg";?>" alt="users">
+                        </div>
+                        <div class="milestone_counter" data-end-value="<?php echo $specialize_number ?>">0</div>
+                        <div class="milestone_text">عدد التخضاضات</div>
                     </div>
                 </div>
 
